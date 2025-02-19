@@ -20,7 +20,7 @@ def advise(input):
            
             {"role": "user", "content": f"Please provide a {input[4]} fincial advice for {input[0]} who is {input[1]} years old: given following information: the annaul income is {input[2]}, the monthly rent/morgage is {input[3]}, {input[0]} is living in {input[6]} and {input[0]} has the following investment goals: planning to invest {input[5]} annaully and {input[7]}, also draw a bar chart to show suggested monthly budget for {input[0]} including Housing (Rent/Mortgage & Utilities), Transportation, Groceries, Dining Out, Health & Insurance, Entertainment & Leisure, Savings & Investments, Miscellaneous."}
         ]
-        ]
+        
     )
     
     advise = response.choices[0].message.content
