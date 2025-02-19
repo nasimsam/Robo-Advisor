@@ -11,8 +11,7 @@ user_input[5] = st.text_input("Please enter your investment amount:")
 user_input[6] = st.text_input("Please enter your location:")
 user_input[7] = st.text_input("Please enter your investment goal:")
 
-#api = st.secrets["openai"]
-api ='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'
+api = st.secrets["openai"]
 def advise(input):
     client = openai.OpenAI(api_key= api)
     response = client.chat.completions.create(
