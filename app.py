@@ -26,11 +26,27 @@ def advise(input):
     advise = response.choices[0].message.content
     return advise
     
-
+def Suggest_Monthly_Budget(input):
+    client = openai.OpenAI(api_key= api)
+    response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[
+           
+            {"role": "user", "content": f"Please suggest monthly budget for {input[0]} who is {input[1]} years old including Housing (Rent/Mortgage & Utilities), Transportation, Groceries, Dining Out, Health & Insurance, Entertainment & Leisure, Savings & Investments, Miscellaneous, given following information: the annaul income is {input[2]}, the monthly rent/morgage is {input[3]}, {input[0]} is living in {input[6]} and {input[0]} has the following investment goals: planning to invest {input[5]} annaully and {input[7]}"}
+        ]
+        
+    )
+    
+    advise = response.choices[0].message.content
+    return advise
 # Creating a button
 
 if st.button("Submit"):
     print(user_input)
 
     st.write("\n", advise(user_input))
+if st.button("Monthly Budgeting Suggestion"):
+    print(user_input)
+
+    st.write("\n", Suggest_Monthly_Budget(user_input))
     
