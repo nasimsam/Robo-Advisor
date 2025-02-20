@@ -15,5 +15,5 @@ A simple Streamlit app that shows how to build a Robo Advisor using OpenAI's gpt
 2. Run the app
 
    ```
-   $ streamlit run streamlit_app.py
+   $ streamlit run app.py
    ```
