@@ -12,7 +12,7 @@ user_input[6] = st.text_input("Please enter your location:")
 user_input[7] = st.text_input("Please enter your investment goal:")
 
 api = st.secrets["openai"]
-def advise(input):
+def Advise(input):
     client = openai.OpenAI(api_key= api)
     response = client.chat.completions.create(
     model="gpt-4o-mini",
@@ -40,14 +40,15 @@ def Suggest_Monthly_Budget(input):
     advise = response.choices[0].message.content
     return advise
 # Creating a button
-if st.button("Monthly Budgeting Suggestion"):
+if st.button("Your Finacial Advise"):
+    print(user_input)
+
+    st.write("\n", advise(user_input))
+
+elif st.button("Monthly Budgeting Suggestion"):
     print(user_input)
 
     st.write("\n", Suggest_Monthly_Budget(user_input))
     
-elif st.button("Submit"):
-    print(user_input)
-
-    st.write("\n", advise(user_input))
 
     
