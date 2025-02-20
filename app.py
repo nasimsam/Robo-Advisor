@@ -40,13 +40,14 @@ def Suggest_Monthly_Budget(input):
     advise = response.choices[0].message.content
     return advise
 # Creating a button
-
-if st.button("Submit"):
-    print(user_input)
-
-    st.write("\n", advise(user_input))
 if st.button("Monthly Budgeting Suggestion"):
     print(user_input)
 
     st.write("\n", Suggest_Monthly_Budget(user_input))
+    
+if st.button("Submit"):
+    print(user_input)
+
+    st.write("\n", advise(user_input))
+
     
