@@ -45,7 +45,7 @@ if st.button("Monthly Budgeting Suggestion"):
 
     st.write("\n", Suggest_Monthly_Budget(user_input))
     
-if st.button("Submit"):
+elif st.button("Submit"):
     print(user_input)
 
     st.write("\n", advise(user_input))
