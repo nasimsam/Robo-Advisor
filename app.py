@@ -47,13 +47,13 @@ def Suggest_Monthly_Budget(input):
     return Budget
 
 # Use OpenAI API to execute code in a conversation
-def Draw_Chart(code):
+def Draw_Chart(json):
     client = openai.OpenAI(api_key= api)
     response = client.chat.completions.create(
     model="gpt-4-turbo",
     messages=[
-        {"role": "system", "content": "You are a Python code execution assistant."},
-        {"role": "user", "content": f"Execute this Python code and return the output:\n{code}"}
+        {"role": "system", "content": "You are a data analyst assistant."},
+        {"role": "user", "content": f"dray stack bar chart for following json object:\n{json}"}
         ]
      )
     chart = response.choices[0].message.content
@@ -67,8 +67,8 @@ if st.button("Your Finacial Advise"):
 elif st.button("Monthly Budgeting Suggestion"):
     print(user_input)
 
-    st.write("\n", Suggest_Monthly_Budget(user_input))
-    st.write("\n", Draw_Chart(code))
+    #st.write("\n", Suggest_Monthly_Budget(user_input))
+    st.write("\n", Draw_Chart(Suggest_Monthly_Budget(user_input)))
     
 
     
