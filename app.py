@@ -12,6 +12,11 @@ user_input[6] = st.text_input("Please enter your location:")
 user_input[7] = st.text_input("Please enter your investment goal:")
 
 api = st.secrets["openai"]
+code = """
+    x = sum(range(1, 101))
+    x
+"""
+
 def Advise(input):
     client = openai.OpenAI(api_key= api)
     response = client.chat.completions.create(
@@ -40,10 +45,6 @@ def Suggest_Monthly_Budget(input):
     
     Budget = response.choices[0].message.content
     return Budget
-code = """
-    x = sum(range(1, 101))
-    x
-"""
 
 # Use OpenAI API to execute code in a conversation
 def Draw_Chart(code):
@@ -53,8 +54,10 @@ def Draw_Chart(code):
     messages=[
         {"role": "system", "content": "You are a Python code execution assistant."},
         {"role": "user", "content": f"Execute this Python code and return the output:\n{code}"}
-    ]
-)
+        ]
+     )
+    chart = response.choices[0].message.content
+    return chart
 # Creating a button
 if st.button("Your Finacial Advise"):
     print(user_input)
