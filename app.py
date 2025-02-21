@@ -40,10 +40,10 @@ def Suggest_Monthly_Budget(input):
     
     Budget = response.choices[0].message.content
     return Budget
-    code = """
+code = """
     x = sum(range(1, 101))
     x
-    """
+"""
 
 # Use OpenAI API to execute code in a conversation
 def Draw_Chart(code):
