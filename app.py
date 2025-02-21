@@ -53,7 +53,7 @@ def Draw_Chart(json):
     model="gpt-4-turbo",
     messages=[
         {"role": "system", "content": "You are a data analyst assistant."},
-        {"role": "user", "content": f"dray stack bar chart for following json object:\n{json}"}
+        {"role": "user", "content": f"draw barchart for following json object:\n{json}"}
         ]
      )
     chart = response.choices[0].message.content
