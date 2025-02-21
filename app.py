@@ -33,7 +33,7 @@ def Suggest_Monthly_Budget(input):
     messages=[
            
             {"role": "user", "content": f"Please suggest monthly budget for {input[0]} in JSON format who is {input[1]} years old containing following keys: 'Housing (Rent/Mortgage & Utilities)', 'Transportation', 'Groceries', 'Dining Out', 'Health & Insurance', 'Entertainment & Leisure', 'Savings & Investments', 'Miscellaneous'. Given following information: the annaul income is {input[2]}, the monthly rent/morgage is {input[3]}, {input[0]} is living in {input[6]} and {input[0]} has the following investment goals: planning to invest {input[5]} annaully and {input[7]}"}
-        ]
+        ],
         response_format={"type": "json_object"}
         
     )
