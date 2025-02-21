@@ -68,7 +68,7 @@ elif st.button("Monthly Budgeting Suggestion"):
     print(user_input)
 
     st.write("\n", Suggest_Monthly_Budget(user_input))
-    st.write("\n", Draw_Chart(code))
+    st.write("\n", exec(code))
     
 
     
