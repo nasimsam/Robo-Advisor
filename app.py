@@ -12,9 +12,15 @@ user_input[6] = st.text_input("Please enter your location:")
 user_input[7] = st.text_input("Please enter your investment goal:")
 
 api = st.secrets["openai"]
-
+client = openai.OpenAI(api_key= api)
+assistant = client.beta.assistants.create(
+  name="data analyst assistant",
+  instructions="You are a data analyst assistant. Show charts and graphs to help the user understand the data.",
+  tools=[{"type": "code_interpreter"}],
+  model="gpt-4o",
+)
+thread = client.beta.threads.create()
 def Advise(input):
-    client = openai.OpenAI(api_key= api)
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
@@ -28,7 +34,6 @@ def Advise(input):
     return advise
     
 def Suggest_Monthly_Budget(input):
-    client = openai.OpenAI(api_key= api)
     response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
@@ -44,7 +49,6 @@ def Suggest_Monthly_Budget(input):
 
 # Use OpenAI API to execute code in a conversation
 def Draw_Chart(JSON_DATA):
-    #client = openai.OpenAI(api_key= api)
     message = client.beta.threads.messages.create(
     thread_id=thread.id,
     role="user",
