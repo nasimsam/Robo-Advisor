@@ -12,10 +12,6 @@ user_input[6] = st.text_input("Please enter your location:")
 user_input[7] = st.text_input("Please enter your investment goal:")
 
 api = st.secrets["openai"]
-code = """
-    x = sum(range(1, 101))
-    x
-"""
 
 def Advise(input):
     client = openai.OpenAI(api_key= api)
@@ -47,28 +43,43 @@ def Suggest_Monthly_Budget(input):
     return Budget
 
 # Use OpenAI API to execute code in a conversation
-def Draw_Chart(json):
-    client = openai.OpenAI(api_key= api)
-    response = client.chat.completions.create(
-    model="gpt-4-turbo",
-    messages=[
-        {"role": "system", "content": "You are a data analyst assistant."},
-        {"role": "user", "content": f"draw barchart for following json object:\n{json}"}
-        ]
-     )
-    chart = response.choices[0].message.content
-    return chart
+def Draw_Chart(JSON_DATA):
+    #client = openai.OpenAI(api_key= api)
+    message = client.beta.threads.messages.create(
+    thread_id=thread.id,
+    role="user",
+    content=f"draw a horizotal barchart for following json object:{JSON_DATA}"
+    )
+    run = client.beta.threads.runs.create_and_poll(
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+    instructions=f"Please address the user as {user_input[0]}"
+    )
+    if run.status == 'completed':
+        messages = client.beta.threads.messages.list(
+        thread_id=thread.id
+       )
+    else:
+      print(run.status)
+    
+    image_data = messages.data[0].content[0].image_file.file_id
+    response = client.files.with_raw_response.content(image_data)
+    if response.status_code == 200:
+      image = Image.open(BytesIO(response.content))
+      #return image
+    else:
+      st.write(f"failed to retrieve image.{response.status_code}")
+      image = None
+    return image
+  
+
 # Creating a button
-if st.button("Your Finacial Advise"):
-    print(user_input)
+if st.button("Submit"):
 
     st.write("\n", advise(user_input))
-
 elif st.button("Monthly Budgeting Suggestion"):
-    print(user_input)
-
-    #st.write("\n", Suggest_Monthly_Budget(user_input))
-    st.write("\n", Draw_Chart(Suggest_Monthly_Budget(user_input)))
     
+    JSON_DATA=Suggest_Monthly_Budget(user_input)
+    st.image(Draw_Chart(JSON_DATA), use_column_width=True)
 
     
