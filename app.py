@@ -87,6 +87,6 @@ if st.button("Submit"):
 elif st.button("Monthly Budgeting Suggestion"):
     
     JSON_DATA=Suggest_Monthly_Budget(user_input)
-    st.image(Draw_Chart(JSON_DATA), use_column_width=True)
+    st.image(Draw_Chart(JSON_DATA), use_container_width=True)
 
     
