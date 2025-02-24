@@ -20,7 +20,7 @@ assistant = client.beta.assistants.create(
   name="data analyst assistant",
   instructions="You are a data analyst assistant. Show charts and graphs to help the user understand the data.",
   tools=[{"type": "code_interpreter"}],
-  model="gpt-4o",
+  model="gpt-4o-mini",
 )
 thread = client.beta.threads.create()
 def Advise(input):
