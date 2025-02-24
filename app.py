@@ -1,5 +1,8 @@
 import streamlit as st
 import openai
+from io import BytesIO
+from PIL import Image
+
 st.title("Robo Advisor")
 user_input= ['' for i in range(8)]
 user_input[0] = st.text_input("Please enter your name:")
