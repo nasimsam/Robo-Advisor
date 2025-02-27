@@ -1,6 +1,6 @@
 # 💬 Robo Advisor
 
-A Streamlit app that shows how to build a Robo Advisor using OpenAI's gpt-4o-mini.
+A Streamlit app that shows how to build a Robo Advisor using OpenAI's gpt-4o-mini. You can check out the app by clicking on the button below.
 
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mdonc8iesse5ueoaappnyuq.streamlit.app/)
 
