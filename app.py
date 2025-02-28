@@ -83,7 +83,7 @@ def Draw_Chart(JSON_DATA):
 # Creating a button
 if st.button("Submit"):
 
-    st.write("\n", advise(user_input))
+    st.write("\n", Advise(user_input))
 elif st.button("Monthly Budgeting Suggestion"):
     
     JSON_DATA=Suggest_Monthly_Budget(user_input)
